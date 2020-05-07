@@ -1,13 +1,16 @@
 package bitrise
 
+const developerPlanDefaultConcurrentBuildCount = 2
+const developerPlanDefaultMaximumBuildDurationInMinutes = 45
+
 type DeveloperPlan struct {}
 
 func (dp DeveloperPlan) GetConcurrentBuildCount() int {
-	return 2
+	return developerPlanDefaultConcurrentBuildCount
 }
 
 func (dp DeveloperPlan) GetMaximumBuildDurationInMinutes() int {
-	return 45
+	return developerPlanDefaultMaximumBuildDurationInMinutes
 }
 
 func (dp DeveloperPlan) GetMaximumBuildsPerMonth() (bool, int) {

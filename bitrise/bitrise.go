@@ -11,10 +11,10 @@ func (a App) GetPlan() IPlan {
 
 type User struct {
 	email string
-	apps []Planner
+	apps []IApp
 }
 
-type Planner interface {
+type IApp interface {
 	GetPlan() IPlan
 }
 

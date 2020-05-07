@@ -1,19 +1,24 @@
 package bitrise
 
+const freePlanDefaultConcurrentBuildCount = 1
+const freePlanDefaultMaximumBuildDurationInMinutes = 45
+const freePlanDefaultMaximumBuildsPerMonth = 200
+const freePlanDefaultMaximumTeamMembers = 2
+
 type FreePlan struct {}
 
 func (fp FreePlan) GetConcurrentBuildCount() int {
-	return 1
+	return freePlanDefaultConcurrentBuildCount
 }
 
 func (fp FreePlan) GetMaximumBuildDurationInMinutes() int {
-	return 10
+	return freePlanDefaultMaximumBuildDurationInMinutes
 }
 
 func (fp FreePlan) GetMaximumBuildsPerMonth() int {
-	return 200
+	return freePlanDefaultMaximumBuildsPerMonth
 }
 
 func (fp FreePlan) GetMaximumTeamMembers() int {
-	return 2
+	return freePlanDefaultMaximumTeamMembers
 }
