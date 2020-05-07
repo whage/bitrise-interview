@@ -1,20 +1,6 @@
 package bitrise
 
-type App struct {
-	isPublic bool
-	plan IPlan
-}
-
-func (a App) GetPlan() IPlan {
-	return a.plan
-}
-
-type User struct {
-	email string
-	apps []IApp
-}
-
-type IApp interface {
+type IPlanOwner interface {
 	GetPlan() IPlan
 }
 
