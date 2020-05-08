@@ -1,5 +1,9 @@
 package bitrise
 
+import (
+	"fmt"
+)
+
 type App struct {
 	IPlan
 	owner User
@@ -21,11 +25,6 @@ func NewApp(owner User, isPublic bool) App {
 		app.IPlan = NewPublicAppPlan()
 	}
 	return app
-}
-
-// TODO: what if this app is not public?
-func (a *App) OptOutFromPublicAppLimits() {
-	a.usesPublicAppLimits = false
 }
 
 func (a App) GetConcurrentBuildCount() int {
@@ -54,4 +53,31 @@ func (a App) GetMaximumTeamMembers() (bool, int) {
 		a.owner.plan.GetMaximumTeamMembers()
 	}
 	return a.IPlan.GetMaximumTeamMembers()
+}
+
+// TODO: what if this app is not public?
+func (a *App) OptOutFromPublicAppLimits() {
+	a.usesPublicAppLimits = false
+}
+
+// TODO: what if this app is not public?
+func (a *App) SetConcurrentBuildCount(n int) (bool, error) {
+	if a.isPublic {
+		plan := a.IPlan.(PublicAppPlan)
+		ok, err := plan.SetConcurrentBuildCount(n)
+		a.IPlan = plan
+		return ok, err
+	}
+	return false, fmt.Errorf("Not a public app")
+}
+
+// TODO: what if this app is not public?
+func (a *App) SetMaximumBuildDurationInMinutes(n int) (bool, error) {
+	if a.isPublic {
+		plan := a.IPlan.(PublicAppPlan)
+		ok, err := plan.SetMaximumBuildDurationInMinutes(n)
+		a.IPlan = plan
+		return ok, err
+	}
+	return false, fmt.Errorf("Not a public app")
 }
