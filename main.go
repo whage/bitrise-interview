@@ -28,7 +28,7 @@ func main() {
 	// 4. opt out from default public app limits
 	// Note: "default" is incorrect in the spec I think
 	publicApp.OptOutFromPublicAppLimits()
-	fmt.Println("publicApp.IPlan after opting out", publicApp.IPlan)
+	fmt.Println("publicApp.IPlan after opting out", publicApp.PublicAppPlan)
 
 	// 5. get the limits of an app
 	fmt.Println(publicApp.GetConcurrentBuildCount())

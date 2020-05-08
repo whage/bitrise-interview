@@ -1,13 +1,7 @@
 package bitrise
 
 type App struct {
-	IPlan
 	owner User
-	usesPublicAppLimits bool
-}
-
-func (a App) GetPlan() IPlan {
-	return a.IPlan
 }
 
 func NewApp(owner User) App {
@@ -17,29 +11,17 @@ func NewApp(owner User) App {
 }
 
 func (a App) GetConcurrentBuildCount() int {
-	if !a.usesPublicAppLimits {
-		a.owner.plan.GetConcurrentBuildCount()
-	}
-	return a.IPlan.GetConcurrentBuildCount()
+	return a.owner.plan.GetConcurrentBuildCount()
 }
 
 func (a App) GetMaximumBuildDurationInMinutes() int {
-	if !a.usesPublicAppLimits {
-		a.owner.plan.GetMaximumBuildDurationInMinutes()
-	}
-	return a.IPlan.GetMaximumBuildDurationInMinutes()
+	return a.owner.plan.GetMaximumBuildDurationInMinutes()
 }
 
 func (a App) GetMaximumBuildsPerMonth() (bool, int) {
-	if !a.usesPublicAppLimits {
-		a.owner.plan.GetMaximumBuildsPerMonth()
-	}
-	return a.IPlan.GetMaximumBuildsPerMonth()
+	return a.owner.plan.GetMaximumBuildsPerMonth()
 }
 
 func (a App) GetMaximumTeamMembers() (bool, int) {
-	if !a.usesPublicAppLimits {
-		a.owner.plan.GetMaximumTeamMembers()
-	}
-	return a.IPlan.GetMaximumTeamMembers()
+	return a.owner.plan.GetMaximumTeamMembers()
 }
