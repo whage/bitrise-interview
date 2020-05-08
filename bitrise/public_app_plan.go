@@ -13,18 +13,19 @@ type PublicAppPlan struct {
 	maximumBuildDurationInMinutes int
 }
 
-func (pap PublicAppPlan) GetConcurrentBuildCount() int {
-	if pap.concurrentBuildCount != 0 {
-		return pap.concurrentBuildCount
+func NewPublicAppPlan() PublicAppPlan {
+	return PublicAppPlan{
+		concurrentBuildCount: publicAppPlanDefaultConcurrentBuildCount,
+		maximumBuildDurationInMinutes: publicAppPlanDefaultMaximumBuildDurationInMinutes,
 	}
-	return publicAppPlanDefaultConcurrentBuildCount
+}
+
+func (pap PublicAppPlan) GetConcurrentBuildCount() int {
+	return pap.concurrentBuildCount
 }
 
 func (pap PublicAppPlan) GetMaximumBuildDurationInMinutes() int {
-	if pap.maximumBuildDurationInMinutes != 0 {
-		return pap.maximumBuildDurationInMinutes
-	}
-	return publicAppPlanDefaultMaximumBuildDurationInMinutes
+	return pap.maximumBuildDurationInMinutes
 }
 
 func (pap PublicAppPlan) GetMaximumBuildsPerMonth() (bool, int) {
