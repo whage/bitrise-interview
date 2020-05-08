@@ -1,16 +1,14 @@
 package bitrise
 
 type PublicApp struct {
-	App
+	PrivateApp
 	PublicAppPlan
 	usesPublicAppLimits bool
 }
 
 func NewPublicApp(owner User) PublicApp {
 	return PublicApp{
-		App: App{
-			owner: owner,
-		},
+		PrivateApp: NewPrivateApp(owner),
 		PublicAppPlan: NewPublicAppPlan(),
 		usesPublicAppLimits: true,
 	}

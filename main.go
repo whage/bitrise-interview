@@ -14,7 +14,7 @@ func main() {
 	publicApp := bitrise.NewPublicApp(user)
 	fmt.Println("new public app", publicApp)
 
-	privateApp := bitrise.NewApp(user)
+	privateApp := bitrise.NewPrivateApp(user)
 	fmt.Println("new private app", privateApp)
 
 	// 3. set up custom limits for a public app
