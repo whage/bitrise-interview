@@ -16,42 +16,34 @@ func NewPublicApp(owner User) PublicApp {
 	}
 }
 
-func (a *PublicApp) OptOutFromPublicAppLimits() {
-	a.usesPublicAppLimits = false
+func (pa *PublicApp) OptOutFromPublicAppLimits() {
+	pa.usesPublicAppLimits = false
 }
 
-func (a *PublicApp) SetConcurrentBuildCount(n int) (bool, error) {
-	return a.PublicAppPlan.SetConcurrentBuildCount(n)
-}
-
-func (a *PublicApp) SetMaximumBuildDurationInMinutes(n int) (bool, error) {
-	return a.PublicAppPlan.SetMaximumBuildDurationInMinutes(n)
-}
-
-func (a PublicApp) GetConcurrentBuildCount() int {
-	if !a.usesPublicAppLimits {
-		a.owner.plan.GetConcurrentBuildCount()
+func (pa PublicApp) GetConcurrentBuildCount() int {
+	if !pa.usesPublicAppLimits {
+		pa.owner.plan.GetConcurrentBuildCount()
 	}
-	return a.PublicAppPlan.GetConcurrentBuildCount()
+	return pa.PublicAppPlan.GetConcurrentBuildCount()
 }
 
-func (a PublicApp) GetMaximumBuildDurationInMinutes() int {
-	if !a.usesPublicAppLimits {
-		a.owner.plan.GetMaximumBuildDurationInMinutes()
+func (pa PublicApp) GetMaximumBuildDurationInMinutes() int {
+	if !pa.usesPublicAppLimits {
+		pa.owner.plan.GetMaximumBuildDurationInMinutes()
 	}
-	return a.PublicAppPlan.GetMaximumBuildDurationInMinutes()
+	return pa.PublicAppPlan.GetMaximumBuildDurationInMinutes()
 }
 
-func (a PublicApp) GetMaximumBuildsPerMonth() (bool, int) {
-	if !a.usesPublicAppLimits {
-		a.owner.plan.GetMaximumBuildsPerMonth()
+func (pa PublicApp) GetMaximumBuildsPerMonth() (bool, int) {
+	if !pa.usesPublicAppLimits {
+		pa.owner.plan.GetMaximumBuildsPerMonth()
 	}
-	return a.PublicAppPlan.GetMaximumBuildsPerMonth()
+	return pa.PublicAppPlan.GetMaximumBuildsPerMonth()
 }
 
-func (a PublicApp) GetMaximumTeamMembers() (bool, int) {
-	if !a.usesPublicAppLimits {
-		a.owner.plan.GetMaximumTeamMembers()
+func (pa PublicApp) GetMaximumTeamMembers() (bool, int) {
+	if !pa.usesPublicAppLimits {
+		pa.owner.plan.GetMaximumTeamMembers()
 	}
-	return a.PublicAppPlan.GetMaximumTeamMembers()
+	return pa.PublicAppPlan.GetMaximumTeamMembers()
 }

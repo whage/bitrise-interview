@@ -7,7 +7,6 @@ import (
 const publicAppPlanDefaultConcurrentBuildCount = 2
 const publicAppPlanDefaultMaximumBuildDurationInMinutes = 45
 
-// TODO: nothing protects these fields from being changed directly
 type PublicAppPlan struct {
 	concurrentBuildCount int
 	maximumBuildDurationInMinutes int
