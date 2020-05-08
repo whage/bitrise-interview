@@ -20,28 +20,28 @@ func (pa *PublicApp) OptOutFromPublicAppLimits() {
 
 func (pa PublicApp) GetConcurrentBuildCount() int {
 	if !pa.usesPublicAppLimits {
-		pa.owner.plan.GetConcurrentBuildCount()
+		return pa.owner.plan.GetConcurrentBuildCount()
 	}
 	return pa.PublicAppPlan.GetConcurrentBuildCount()
 }
 
 func (pa PublicApp) GetMaximumBuildDurationInMinutes() int {
 	if !pa.usesPublicAppLimits {
-		pa.owner.plan.GetMaximumBuildDurationInMinutes()
+		return pa.owner.plan.GetMaximumBuildDurationInMinutes()
 	}
 	return pa.PublicAppPlan.GetMaximumBuildDurationInMinutes()
 }
 
 func (pa PublicApp) GetMaximumBuildsPerMonth() (bool, int) {
 	if !pa.usesPublicAppLimits {
-		pa.owner.plan.GetMaximumBuildsPerMonth()
+		return pa.owner.plan.GetMaximumBuildsPerMonth()
 	}
 	return pa.PublicAppPlan.GetMaximumBuildsPerMonth()
 }
 
 func (pa PublicApp) GetMaximumTeamMembers() (bool, int) {
 	if !pa.usesPublicAppLimits {
-		pa.owner.plan.GetMaximumTeamMembers()
+		return pa.owner.plan.GetMaximumTeamMembers()
 	}
 	return pa.PublicAppPlan.GetMaximumTeamMembers()
 }
