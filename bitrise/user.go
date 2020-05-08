@@ -3,11 +3,7 @@ package bitrise
 type User struct {
 	email string
 	plan IPlan
-	apps []IPlanOwner
-}
-
-func (u User) GetPlan() IPlan {
-	return u.plan
+	apps []IApp
 }
 
 func NewUser(email string, plan IPlan) User {
@@ -15,4 +11,8 @@ func NewUser(email string, plan IPlan) User {
 		email: email,
 		plan: plan,
 	}
+}
+
+func (u *User) AddApp(app IApp) {
+	u.apps = append(u.apps, app)
 }

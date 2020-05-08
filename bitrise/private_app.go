@@ -10,6 +10,10 @@ func NewPrivateApp(owner User) PrivateApp {
 	}
 }
 
+func (a PrivateApp) GetOwner() User {
+	return a.owner
+}
+
 func (a PrivateApp) GetConcurrentBuildCount() int {
 	return a.owner.plan.GetConcurrentBuildCount()
 }

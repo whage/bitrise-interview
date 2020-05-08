@@ -1,7 +1,7 @@
 package bitrise
 
-type IPlanOwner interface {
-	GetPlan() IPlan
+type IApp interface {
+	GetOwner() User
 }
 
 type IPlan interface {
