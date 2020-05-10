@@ -6,10 +6,10 @@ type PublicApp struct {
 	usesPublicAppLimits bool
 }
 
-func NewPublicApp(owner User) PublicApp {
+func NewPublicApp(base PrivateApp, plan PublicAppPlan) PublicApp {
 	return PublicApp{
-		PrivateApp: NewPrivateApp(owner),
-		PublicAppPlan: NewPublicAppPlan(),
+		PrivateApp: base,
+		PublicAppPlan: plan,
 		usesPublicAppLimits: true,
 	}
 }

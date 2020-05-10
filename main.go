@@ -10,8 +10,8 @@ func main() {
 	user := bitrise.NewUser("dude@bitrise.io", bitrise.OrganizationPlan{})
 	fmt.Println("New user:", user)
 
-	// 2. create a public or private app
-	publicApp := bitrise.NewPublicApp(user)
+	// 2. create public and private apps
+	publicApp := bitrise.NewPublicApp(bitrise.NewPrivateApp(user), bitrise.NewPublicAppPlan())
 	user.AddApp(publicApp)
 	fmt.Println("New public app:", publicApp)
 
